@@ -18,7 +18,7 @@ ACScraper is a simple proxy server tool designed to intercept and extract the AP
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/ACScraper.git
+   git clone https://github.com/dwot/acscraper.git
    cd ACScraper
    ```
 
