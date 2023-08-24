@@ -1,28 +1,23 @@
+# .github/workflows/release.yaml
+
 name: Release ACScraper binaries
 
 on:
   release:
     types: [created]
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
-  releases-matrix:
-    name: Release Go Binary
+  release-linux-amd64:
+    name: release linux/amd64
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # build and publish in parallel: linux/amd64
-        goos: [linux, darwin, windows]
-        goarch: [amd64]
     steps:
-      - uses: actions/checkout@v2
-      - name: Run tests
-        run: go test -v -p=1 -timeout=0 ./...
-      - uses: wangyoucao577/go-release-action@v1.16
+      - uses: actions/checkout@v3
+      - uses: wangyoucao577/go-release-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          goos: ${{ matrix.goos }}
-          goarch: ${{ matrix.goarch }}
-          project_path: "./cmd/tbb"
-          binary_name: "tbb"
-          ldflags: "-s -w"
-          extra_files: Readme.md
+          goos: [linux, darwin, windows]
+          goarch: amd64
