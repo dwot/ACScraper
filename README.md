@@ -12,7 +12,7 @@ ACScraper is a simple proxy server tool designed to intercept and display the AP
 
 ### 1. **Download and Install**
 
-Choose the appropriate build for your operating system from the [Releases](https://github.com/dwot/acscraper/releases) section:
+Choose the appropriate build for your operating system from the [Releases](https://github.com/dwot/ACScraper/releases) section:
 
 Also, download the corresponding `.md5` file to verify the integrity of your download.
 
