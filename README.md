@@ -1,48 +1,42 @@
 # ACScraper
 
-ACScraper is a simple proxy server tool designed to intercept and extract the API token from the AC Infinity app. This API token is utilized to fetch status and sensor readings from the AC Infinity controller used in AC Infinity grow tents. Once the token is extracted, it can be further used in the TentStatter application to record values to a text file or integrated into custom code to gather metrics.
+ACScraper is a simple proxy server tool designed to intercept and display the API token from requests made by the AC Infinity app. This token can be used in conjunction with apps such as [TentStatter](https://github.com/dwot/TentStatter) to collect and log data from AC Infinity grow tents.
 
 ## Features
 
-- Captures and displays the API token from the AC Infinity app's request headers.
-- Displays the `User-Agent` header value.
-- Lightweight and easy-to-run.
-- Acts as a transparent proxy, forwarding all requests and responses without modifying them.
+- Intercepts requests to `http://www.acinfinityserver.com/api/` to capture the API token and user-agent string.
+- Simple to use with clear console instructions for proxy settings.
+- Supports multiple platforms: Windows, Linux, and macOS.
 
-## Prerequisites
+## Getting Started
 
-- Go (Golang) installed on your machine.
+### 1. **Download and Install**
 
-## Setup and Usage
+Choose the appropriate build for your operating system from the [Releases](https://github.com/dwot/acscraper/releases) section:
 
-1. **Clone the repository**:
+Also, download the corresponding `.md5` file to verify the integrity of your download.
 
-   ```bash
-   git clone https://github.com/dwot/acscraper.git
-   cd ACScraper
-   ```
+### 2. **Verify Download (Optional)**
 
-2. **Run the proxy server**:
+Before unpacking, you can verify the integrity of your download by comparing the MD5 checksum of your downloaded file with the one provided:
 
-   ```bash
-   go run main.go
-   ```
+```bash
+# For Linux/macOS
+md5sum acscraper-v0.0.1-YOUR_OS_HERE.tar.gz
 
-3. Once the server is running, you'll see the IP address and port where it's listening. For example:
+# For Windows (in PowerShell)
+Get-FileHash -Algorithm MD5 .\acscraper-v0.0.1-windows-amd64.zip
+```
 
-   ```
-   Starting proxy server on IP: 192.168.1.10 and port: 8080
-   On your phone, set your proxy server to: 192.168.1.10 with port: 8080
-   ```
+The output should match the contents of the corresponding `.md5` file.
 
-4. **Configure your phone**:
+### 3. **Unpack and Run**
 
-   Set your phone's proxy settings to the IP address and port displayed in the console output.
+Uncompress the downloaded file and run the ACScraper executable.
 
-5. **Capture the token**:
+On first launch, the tool will display your local IP address and prompt you to set your phone's proxy server to the displayed IP with port 8080.
 
-   Open the AC Infinity app and perform an action that triggers a request to `http://www.acinfinityserver.com/api/`. The proxy server will capture and display the `token` and `User-Agent` headers from the request.
+### 4. **Capture the Token**
 
-6. **Use the token**:
+With the proxy settings adjusted on your phone, initiate a request from the AC Infinity app. ACScraper will display the captured token and user-agent string in the console.
 
-   Integrate the token into the TentStatter application or any custom code to start gathering data from the AC Infinity controller.
