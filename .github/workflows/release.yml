@@ -4,7 +4,7 @@ name: Release ACScraper binaries
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 permissions:
   contents: write
